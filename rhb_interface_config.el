@@ -1,4 +1,4 @@
-(provide 'rhb_ui_config)
+(provide 'rhb_interface_config)
 
 ;; Turn off the UI
 (if (fboundp 'scroll-bar-mode)
