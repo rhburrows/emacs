@@ -9,7 +9,7 @@
 ;; General Interface Changes
 ;;
 (require 'rhb_keybindings)
-(require 'rhb_ui_config)
+(require 'rhb_interface_config)
 
 ;;
 ;; System specific changes
