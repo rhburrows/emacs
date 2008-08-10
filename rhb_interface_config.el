@@ -8,14 +8,29 @@
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
 
+;; Turn off splash screen on startup
 (setq inhibit-splash-screen t)
 
+;; Turn on highlighting of selected region
 (setq transient-mark-mode t)
 
+;; Turn on highlighting of matching parens
 (show-paren-mode t)
 
+;; Show column number with line number
 (setq column-number-mode t)
 
+;; Turn off backups
+(setq make-backup-files nil)
+
+;; Set up Emacs to run bash as its primary shell.
+(setq shell-file-name "bash")
+(setq shell-command-switch "-c")
+(setq explicit-shell-file-name shell-file-name)
+(setenv "SHELL" shell-file-name)
+(setq explicit-sh-args '("-login" "-i"))
+
+;; Color scheme similar to vibrant ink from TextMate
 (defun set-theme-to-vibrant-ink()
   "http://github.com/smtlaissezfaire/emacs-extensions/tree/master/vibrant-ink.el"
   (setq font-lock-maximum-decoration t)
@@ -29,4 +44,5 @@
   (set-face-foreground font-lock-function-name-face "orange")
   (set-face-foreground font-lock-string-face "green"))
 
+;; Default color scheme
 (set-theme-to-vibrant-ink)
