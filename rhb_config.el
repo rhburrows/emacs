@@ -6,6 +6,11 @@
 (provide 'rhb_config)
 
 ;;
+;; Start the server so we can use emacsclient to open files
+;;
+(server-start)
+
+;;
 ;; General Interface Changes
 ;;
 (require 'rhb_keybindings)
@@ -29,8 +34,10 @@
 (add-to-list 'load-path "~/emacs/lisp") ;; Configuration for list programming
 (add-to-list 'load-path "~/emacs/flymake") ;; Flymake syntax checker
 (add-to-list 'load-path "~/emacs/xml") ;; Configuration for XML-modes
+(add-to-list 'load-path "~/emacs/clojure") ;; Configuration for clojure
 
 (require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
+(require 'rhb_clojure_config) ;; Loading Clojure modes
