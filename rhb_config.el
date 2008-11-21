@@ -10,6 +10,8 @@
 ;;
 (server-start)
 
+;;; Some of this below stuff might start belonging in separate files
+
 ;; Pull this out (from stuart halloway screencast)
 (require 'ido)
 ;; Enable fuzzy matching
@@ -18,6 +20,9 @@
 	  (lambda ()
 	    (define-key ido-completion-map [tab] 'ido-complete)))
 (ido-mode t)
+
+;; text-mode setup
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;;
 ;; General Interface Changes
