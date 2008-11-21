@@ -10,6 +10,15 @@
 ;;
 (server-start)
 
+;; Pull this out (from stuart halloway screencast)
+(require 'ido)
+;; Enable fuzzy matching
+(setq ido-enable-flex-matching t)
+(add-hook 'ido-setup-hook
+	  (lambda ()
+	    (define-key ido-completion-map [tab] 'ido-complete)))
+(ido-mode t)
+
 ;;
 ;; General Interface Changes
 ;;
