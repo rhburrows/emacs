@@ -42,6 +42,12 @@
 (require 'rhb_org_config) ;; Configuration for Org-mode
 
 ;;
+;; Support for the w3m webbrowser
+;;
+(add-to-list 'load-path "~/emacs/emacs-w3m")
+(require 'rhb_w3m_config)
+
+;;
 ;; Programming language customizations
 ;;
 (add-to-list 'load-path "~/emacs/erlang") ;; Configuration for Erlang mode

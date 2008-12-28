@@ -1,5 +1,5 @@
 ;;; greader.el --- Google Reader
-;;;$Id: greader.el,v 1.74 2006/10/13 01:37:30 raman Exp $
+;;;$Id: greader.el 6031 2008-11-05 22:47:47Z tv.raman.tv $
 ;;; $Author: raman $
 ;;; Description:  Google Reader
 ;;; Keywords: Google   Atom API
@@ -217,7 +217,7 @@ from the server.")
   "URL  for  finding feeds.")
 
 (defvar greader-edit-url-pattern
-  "http://www.google.com/reader/api/0/%s/edit"
+  "'http://www.google.com/reader/api/0/%s/edit'"
   "URL  pattern for  edit URLs.")
 
 (defvar greader-edit-alist
@@ -294,8 +294,8 @@ user."
           do
           (push
            (cons
-            (cdr (assoc 'id v))
-            (cdr (assoc 'value v)))
+            (cdr (assq 'id v))
+            (cdr (assq 'value v)))
            preferences))
     (setq greader-preferences preferences)))
 
@@ -303,16 +303,36 @@ user."
   (concat greader-base-url
           "api/0/subscription/list?output=json")
   "URL for retrieving list of subscribed feeds.")
+
+(defvar greader-unread-count-url
+  (concat greader-base-url
+          "api/0/unread-count?all=true&output=json")
+  "URL for retrieving unread counts for subscribed  feeds.")
+
+(defvar greader-subscription-opml-url
+  (concat greader-base-url
+          "subscriptions/export")
+  "URL for retrieving list of subscribed feeds.")
+
 (defvar greader-tag-list-url
   (concat greader-base-url
           "api/0/tag/list?output=json")
   "URL for retrieving list of tags.")
 
+
+
+(defsubst greader-id-to-url (id)
+  "Translate Google Reader ids to URLs."
+  (let ((url (substring id 5)))
+    (cond
+     ((string-match "^http" url) url)
+     (t (concat greader-atom-base url)))))
+
+
 (defun greader-view-json-subscriptions (subscriptions)
   "View Greader Subscription list."
   (declare (special greader-atom-base))
   (g-using-scratch
-   (erase-buffer)
    (insert
     (format
      "<html><head>
@@ -324,14 +344,11 @@ user."
             (g-auth-username greader-auth-handle)))
    (loop for s across subscriptions
          do
-         (let ((id (g-json-get 'id s)))
+         (let* ((id (g-json-get 'id s)))
            (insert
             (format
              "<li><a href=\"%s\">%s (%s)</a></li>\n"
-             (let ((url (substring id 5)))
-               (cond
-                ((string-match "^http" url) url)
-                (t (concat greader-atom-base url))))
+             (greader-id-to-url id)
              (g-json-get 'title s)
              (cond
               ((string-match "rss" id) "R")
@@ -340,31 +357,129 @@ user."
    (insert "</ol></body></html>\n")
    (browse-url-of-region (point-min) (point-max))))
 
-;;;###autoload
-(defun greader-feed-list (&optional sort)
-  "Retrieve list of subscribed feeds.
-Optional interactive prefix arg `sort' sorts feeds based on newly
-arrived articles."
-  (interactive "P")
+(defun greader-view-json-results (query results)
+  "View Greader results list."
+  (declare (special greader-atom-base))
+  (let ((items (g-json-get 'items results)))
+    (g-using-scratch
+     (insert
+      (format
+       "<html><head>
+<title> Results Matching %s</title>
+</head>\n"
+       query))
+     (insert
+      (format "<body><h1>Results Matching  %s</h1>\n<ol>"
+              query))
+     (loop for item across items
+           do
+           (insert
+            (format "<h2><a href='%s'>%s</a></h2>\n"
+                    (g-json-get 'title item)
+                    (g-json-get 'title item)))
+           (insert
+            (format "<div>%s</div>\n"
+                    (g-json-get 'content
+                                (g-json-get 'content item)))))
+     (browse-url-of-buffer))))
+
+
+(defun greader-unread-count ()
+  "Retrieve unread counts for subscribed feeds."
+  (declare (special greader-auth-handle
+                    g-curl-program g-curl-common-options
+                    greader-unread-count-url))
+  (let ((counts
+         (g-json-get 'unreadcounts
+                     (g-json-get-result
+                      (format
+                       "%s %s --cookie SID='%s' '%s' 2>/dev/null"
+                       g-curl-program g-curl-common-options
+                       (g-cookie "SID" greader-auth-handle)
+                       greader-unread-count-url)))))
+    counts))
+
+(defsubst greader-get-unread-count-by-id (id counts)
+  "Given a Feed Id, get the unread count from the cache in counts."
+  (let ((c
+         (find-if
+          #'(lambda (a)
+              (equal (g-json-get 'id a) id))
+          counts)))
+    (g-json-get 'count  c)))
+
+(defsubst greader-get-timestamp-by-id (id counts)
+  "Given a Feed Id, get the timestamp from the cache in counts."
+  (let ((c
+         (find-if
+          #'(lambda (a)
+              (equal (g-json-get 'id a) id))
+          counts)))
+    (g-json-get 'newestItemTimestampUsec c)))
+
+
+
+
+(defsubst greader-subscriptions ()
+  "Return subscribed feeds as a list of URLs."
   (declare (special greader-auth-handle
                     g-curl-program g-curl-common-options
                     greader-subscribed-feed-list-url))
   (g-auth-ensure-token greader-auth-handle)
   (let ((subscriptions
          (g-json-get 'subscriptions
+              (g-json-get-result
+               (format
+                "%s %s --cookie SID='%s' %s 2>/dev/null"
+                g-curl-program g-curl-common-options
+                (g-cookie "SID" greader-auth-handle)
+                greader-subscribed-feed-list-url)))))
+        (loop for s across subscriptions
+         collect
+         (let* ((id (g-json-get 'id s))
+                (url (substring id 5)))
+           (cond
+                ((string-match "^http" url) url)
+                (t (concat greader-atom-base url)))))))
+
+
+;;;###autoload
+(defun greader-subscriptions ()
+  "Return list of subscribed feeds."
+  (declare (special greader-auth-handle
+                    g-curl-program g-curl-common-options
+                    greader-subscribed-feed-list-url))
+  (g-auth-ensure-token greader-auth-handle)
+  (let (
+        (subscriptions (g-json-get 'subscriptions
                      (g-json-get-result
                       (format
                        "%s %s --cookie SID='%s' %s 2>/dev/null"
                        g-curl-program g-curl-common-options
                        (g-cookie "SID" greader-auth-handle)
                        greader-subscribed-feed-list-url)))))
-    (when sort
-      (setq subscriptions
-            (sort* subscriptions
-                   #'(lambda (a b)
-                       (< (string-to-number (g-json-get 'firstitemmsec b))
-                          (string-to-number (g-json-get 'firstitemmsec a)))))))
-    (greader-view-json-subscriptions subscriptions)))
+    subscriptions))
+             
+;;;###autoload
+(defun greader-feed-list ()
+  "Retrieve list of subscribed feeds."
+  (interactive)
+  (greader-view-json-subscriptions (greader-subscriptions)))
+  
+;;;###autoload
+
+(defun greader-opml ()
+  "Retrieve OPML representation of our subscription list."
+  (interactive)
+  (declare (special greader-auth-handle greader-subscription-opml-url
+                    g-curl-program g-curl-common-options))
+  (g-auth-ensure-token greader-auth-handle)
+  (shell-command
+   (format
+    "%s %s --cookie SID='%s' %s 2>/dev/null"
+    g-curl-program g-curl-common-options
+    (g-cookie "SID" greader-auth-handle)
+    greader-subscription-opml-url)))
 
 (defun greader-view-json-tags (tags)
   "View Greader tag list."
@@ -443,6 +558,7 @@ arrived articles."
     (read-from-minibuffer "Feed URL: "
                           (funcall g-url-under-point))))
   (greader-update-subscription feed-url 'title))
+
 ;;;###autoload
 (defun greader-tag-feed (feed-url )
   "Tag  specified feed."
@@ -490,7 +606,7 @@ arrived articles."
                      ('add-tags "Add Tag:")
                      ('remove-tags "Remove Tag:")))
                 "")))
-     (setq cl (format "-H Content-length:%s" (buffer-size)))
+     (setq cl (format "'-H Content-Length: %s'" (g-buffer-bytes)))
      (shell-command-on-region
       (point-min) (point-max)
       (format
@@ -504,8 +620,9 @@ arrived articles."
    (cond
     ((looking-at "OK")
      (message "%s %s" action feed-url))
-    (t (error "Error %s: %s"
-              action (buffer-string))))))
+    (t (error "Error %s: "
+              action )))))
+
 (defsubst greader-read-item-url (prompt)
   "Smart reader for fetching item urls."
   (let ((guess (and (fboundp g-url-under-point)
@@ -593,6 +710,110 @@ arrived articles."
      g-atom-view-xsl)))
 
 ;;}}}
+;;{{{ Searching:
+
+(defvar greader-search-url
+  (concat greader-base-url
+          "api/0/search/items/ids?output=json&num=100&q=%s")
+  "URL template for GReader search.")
+
+(defvar greader-contents-rest-url
+  "http://www.google.com/reader/api/0/stream/items/contents"
+  "REST endpoint for getting content.")e
+
+(defun greader-search-results (query)
+  "Return GReader search results."
+  (declare (special greader-auth-handle
+                    g-curl-program g-curl-common-options
+                    greader-contents-rest-url
+                    greader-search-url ))
+  (g-auth-ensure-token greader-auth-handle)
+  (let ((results 
+         (g-json-get 'results
+                     (g-json-get-result
+                      (format
+                       "%s %s --cookie SID='%s' '%s' 2>/dev/null"
+                       g-curl-program g-curl-common-options
+                       (g-cookie "SID" greader-auth-handle)
+                       (format greader-search-url
+                               (g-url-encode query))))))
+        (docids nil))
+    (setq docids 
+          (loop for i across results
+                collect (cdr (assq 'id i))))
+    (g-using-scratch
+     (let ((cl  nil))
+       (insert 
+        (format "T=%s" (g-auth-token greader-auth-handle)))
+       (mapc
+        #'(lambda (i) (insert (format "&i=%s" i)))
+        docids)
+       (setq cl (format "-H 'Content-Length: %ss'" (g-buffer-bytes)))
+       (shell-command-on-region
+        (point-min) (point-max)
+        (format
+         "%s %s --cookie SID='%s' %s -X POST --data-binary @- %s 2>/dev/null"
+         g-curl-program g-curl-common-options
+         (g-cookie "SID" greader-auth-handle)
+         cl                             ; content-length header
+         greader-contents-rest-url)
+        (current-buffer) 'replace))
+     (goto-char (point-min))
+     (setq results (json-read)))
+    results))
+
+;;;###autoload
+(defun greader-search (query)
+  "GReader search."
+  (interactive "sQuery:")
+  
+  
+  (greader-view-json-results
+   query
+   (greader-search-results query)))
+
+;;}}}
+;;{{{ Sign out:
+;;;###autoload
+(defun greader-sign-out()
+  "Resets client so you can start with a different userid."
+  (interactive)
+  (declare (special greader-auth-handle
+                    greader-user-email greader-user-password))
+  (message "Signing out %s from Reader"
+           (g-auth-email greader-auth-handle))
+  (cond
+   (greader-auth-handle
+    (setq greader-user-email nil
+          greader-user-password nil)
+    (setq greader-auth-handle (make-greader-auth)))
+   (t (message "You've not used Reader in this emacs
+session."))))
+
+;;;###autoload
+(defun greader-sign-in()
+  "Resets client so you can start with a different userid."
+  (interactive)
+  (declare (special greader-auth-handle greader-user-email ))
+  (setq greader-user-email
+        (read-from-minibuffer "User Email:"))
+  (setq greader-auth-handle (make-greader-auth))
+  (g-authenticate greader-auth-handle))
+
+;;;###autoload
+(defun greader-re-authenticate()
+  "Reauthenticate current user."
+  (interactive)
+  (declare (special greader-auth-handle))
+  (cond
+   (greader-auth-handle
+  (g-authenticate greader-auth-handle)
+  (message "Re-authenticated %s"
+           (g-auth-email greader-auth-handle)))
+   (t (error "You've not signed in yet."))))
+
+;;}}}
+
 (provide 'greader)
 ;;{{{ end of file
 
