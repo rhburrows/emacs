@@ -46,3 +46,9 @@
 
 ;; Default color scheme
 (set-theme-to-vibrant-ink)
+
+;; highlight the current line
+(defface hl-line '((t (:background "midnight blue")))
+  "Face to use for `hl-line-face'." :group 'hl-line)
+(setq hl-line-face 'hl-line)
+(global-hl-line-mode t)
