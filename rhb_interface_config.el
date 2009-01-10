@@ -45,10 +45,15 @@
   (set-face-foreground font-lock-string-face "green"))
 
 ;; Default color scheme
-(set-theme-to-vibrant-ink)
+;(set-theme-to-vibrant-ink)
+; Use color-theme instead
+
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-midnight)
 
 ;; highlight the current line
-(defface hl-line '((t (:background "midnight blue")))
-  "Face to use for `hl-line-face'." :group 'hl-line)
-(setq hl-line-face 'hl-line)
-(global-hl-line-mode t)
+;(defface hl-line '((t (:background "midnight blue")))
+;  "Face to use for `hl-line-face'." :group 'hl-line)
+;(setq hl-line-face 'hl-line)
+;(global-hl-line-mode t)

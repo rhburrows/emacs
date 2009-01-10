@@ -25,15 +25,10 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;;
-;; General Interface Changes
-;;
-(require 'rhb_keybindings)
-(require 'rhb_interface_config)
-
-;;
 ;; System specific changes
 ;;
-(if (string= window-system "mac")
+(if (or (string= window-system "mac")
+	(string= window-system "ns"))
     (require 'rhb_mac_config))
 
 ;;
@@ -57,6 +52,7 @@
 (add-to-list 'load-path "~/emacs/clojure") ;; Configuration for clojure
 (add-to-list 'load-path "~/emacs/markdown") ;; Configuration for markdown
 (add-to-list 'load-path "~/emacs/g-client") ;; Configuration for google servies
+(add-to-list 'load-path "~/emacs/color-theme") ;; Configuration for color themes
 
 (require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -65,3 +61,10 @@
 (require 'rhb_clojure_config) ;; Loading Clojure modes
 (require 'rhb_markdown_config) ;; Loading Markdown modes
 (require 'rhb_g_config) ;; Loading Google modes
+;;
+;; General Interface Changes
+;;
+(require 'rhb_keybindings)
+(require 'rhb_interface_config)
+
+
