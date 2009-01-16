@@ -24,7 +24,7 @@
 
 ;;; Code:
 
-(defvar growl-program "growlnotify")
+(defvar growl-program "/usr/local/bin/growlnotify")
 
 (defun growl (title message)
   (start-process "growl" " growl"

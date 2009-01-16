@@ -53,6 +53,8 @@
 (add-to-list 'load-path "~/emacs/markdown") ;; Configuration for markdown
 (add-to-list 'load-path "~/emacs/g-client") ;; Configuration for google servies
 (add-to-list 'load-path "~/emacs/color-theme") ;; Configuration for color themes
+(add-to-list 'load-path "~/emacs/haskell") ;; Configuration for haskell
+(add-to-list 'load-path "~/emacs/js") ;; Configuration for javascript
 
 (require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -61,6 +63,8 @@
 (require 'rhb_clojure_config) ;; Loading Clojure modes
 (require 'rhb_markdown_config) ;; Loading Markdown modes
 (require 'rhb_g_config) ;; Loading Google modes
+(require 'rhb_haskell_config) ;; Loading Haskell modes
+(require 'rhb_js_config) ;; Loading Javascript modes
 ;;
 ;; General Interface Changes
 ;;

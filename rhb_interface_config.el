@@ -8,6 +8,9 @@
 (if (fboundp 'menu-bar-mode)
     (menu-bar-mode -1))
 
+;; Turn of the bell
+(setq ring-bell-function 'ignore)
+
 ;; Turn off splash screen on startup
 (setq inhibit-splash-screen t)
 
