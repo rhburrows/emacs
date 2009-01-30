@@ -55,6 +55,7 @@
 (add-to-list 'load-path "~/emacs/color-theme") ;; Configuration for color themes
 (add-to-list 'load-path "~/emacs/haskell") ;; Configuration for haskell
 (add-to-list 'load-path "~/emacs/js") ;; Configuration for javascript
+(add-to-list 'load-path "~/emacs/haxe") ;; Configuration for haxe
 
 (require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -65,6 +66,8 @@
 (require 'rhb_g_config) ;; Loading Google modes
 (require 'rhb_haskell_config) ;; Loading Haskell modes
 (require 'rhb_js_config) ;; Loading Javascript modes
+(require 'rhb_haxe_config) ;; Loading Haxe modes
+
 ;;
 ;; General Interface Changes
 ;;
