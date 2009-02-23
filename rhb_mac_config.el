@@ -1,6 +1,6 @@
 (provide 'rhb_mac_config)
 
-(setq mac-command-modifier 'meta)
+;(setq mac-command-modifier 'meta)
 (setq x-select-enable-clipboard t)
 
 ;;
