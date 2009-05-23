@@ -58,6 +58,11 @@
 (add-to-list 'load-path "~/emacs/gnus")
 
 ;;
+;; Lets us turn buffers into html with syntax highlighting
+;;
+(require 'htmlize)
+
+;;
 ;; Programming language customizations
 ;;
 (add-to-list 'load-path "~/emacs/erlang") ;; Configuration for Erlang mode
