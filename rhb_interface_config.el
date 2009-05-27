@@ -54,7 +54,8 @@
 (require 'color-theme)
 (color-theme-initialize)
 ;(color-theme-midnight)
-(color-theme-charcoal-black)
+;(color-theme-charcoal-black)
+(color-theme-clarity)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))
