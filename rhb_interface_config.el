@@ -51,11 +51,15 @@
 ;(set-theme-to-vibrant-ink)
 ; Use color-theme instead
 
-(require 'color-theme)
-(color-theme-initialize)
+;(require 'color-theme)
+;(color-theme-initialize)
 ;(color-theme-midnight)
 ;(color-theme-charcoal-black)
-(color-theme-clarity)
+;(color-theme-clarity)
+;; Zenburn requires color-theme
+(add-to-list 'load-path "~/emacs/themes")
+(require 'zenburn)
+(color-theme-zenburn)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))

@@ -24,6 +24,9 @@
 ;; text-mode setup
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; Set the default spell check program
+(setq-default ispell-program-name "/opt/local/bin/aspell")
+
 ;;
 ;; System specific changes
 ;;
