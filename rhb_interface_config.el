@@ -33,6 +33,9 @@
 (setenv "SHELL" shell-file-name)
 (setq explicit-sh-args '("-login" "-i"))
 
+;; Turn on the clock
+(display-time)
+
 ;; Color scheme similar to vibrant ink from TextMate
 (defun set-theme-to-vibrant-ink()
   "http://github.com/smtlaissezfaire/emacs-extensions/tree/master/vibrant-ink.el"
