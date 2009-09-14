@@ -74,11 +74,11 @@
 (add-to-list 'load-path "~/emacs/xml") ;; Configuration for XML-modes
 (add-to-list 'load-path "~/emacs/clojure") ;; Configuration for clojure
 (add-to-list 'load-path "~/emacs/markdown") ;; Configuration for markdown
-(add-to-list 'load-path "~/emacs/g-client") ;; Configuration for google servies
 (add-to-list 'load-path "~/emacs/color-theme") ;; Configuration for color themes
 (add-to-list 'load-path "~/emacs/haskell") ;; Configuration for haskell
 (add-to-list 'load-path "~/emacs/js") ;; Configuration for javascript
 (add-to-list 'load-path "~/emacs/haxe") ;; Configuration for haxe
+(add-to-list 'load-path "~/emacs/jabber") ;; Configuration for jabber
 
 (require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -86,10 +86,10 @@
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
 (require 'rhb_clojure_config) ;; Loading Clojure modes
 (require 'rhb_markdown_config) ;; Loading Markdown modes
-(require 'rhb_g_config) ;; Loading Google modes
 (require 'rhb_haskell_config) ;; Loading Haskell modes
 (require 'rhb_js_config) ;; Loading Javascript modes
 (require 'rhb_haxe_config) ;; Loading Haxe modes
+(require 'rhb_jabber_config) ;; Loading jabber mode
 
 ;;
 ;; General Interface Changes
