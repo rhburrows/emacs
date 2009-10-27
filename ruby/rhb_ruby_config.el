@@ -6,6 +6,10 @@
 
 (add-to-list 'auto-mode-alist
 	     '("\\.rhtml$" . rhtml-mode))
+(add-hook 'rhtml-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq auto-fill-mode nil)))
 
 (require 'autotest)
 (require 'rcov-overlay)

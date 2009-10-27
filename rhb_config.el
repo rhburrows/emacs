@@ -60,6 +60,9 @@
 ;;
 (add-to-list 'load-path "~/emacs/gnus")
 
+;; Spaces not tabs
+(setq indent-tabs-mode nil)
+
 ;;
 ;; Lets us turn buffers into html with syntax highlighting
 ;;
@@ -68,7 +71,7 @@
 ;;
 ;; Programming language customizations
 ;;
-(add-to-list 'load-path "~/emacs/erlang") ;; Configuration for Erlang mode
+;(add-to-list 'load-path "~/emacs/erlang") ;; Configuration for Erlang mode
 (add-to-list 'load-path "~/emacs/lisp") ;; Configuration for list programming
 (add-to-list 'load-path "~/emacs/flymake") ;; Flymake syntax checker
 (add-to-list 'load-path "~/emacs/xml") ;; Configuration for XML-modes
@@ -79,8 +82,10 @@
 (add-to-list 'load-path "~/emacs/js") ;; Configuration for javascript
 (add-to-list 'load-path "~/emacs/haxe") ;; Configuration for haxe
 (add-to-list 'load-path "~/emacs/jabber") ;; Configuration for jabber
+(add-to-list 'load-path "~/emacs/ruby") ;; Configuration for ruby programming
+(add-to-list 'load-path "~/emacs/magit") ;; Configuration for git
 
-(require 'rhb_erlang_config) ;; Loading Erlang mode
+;(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
@@ -90,6 +95,8 @@
 (require 'rhb_js_config) ;; Loading Javascript modes
 (require 'rhb_haxe_config) ;; Loading Haxe modes
 (require 'rhb_jabber_config) ;; Loading jabber mode
+(require 'rhb_ruby_config) ;; Loading ruby modes
+(require 'rhb_git_config) ;; Loading git modes
 
 ;;
 ;; General Interface Changes
