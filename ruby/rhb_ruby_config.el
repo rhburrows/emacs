@@ -10,7 +10,11 @@
 (add-to-list 'auto-mode-alist
 	     '("\\.haml$" . haml-mode))
 
-(require 'feature-mode)
+(add-hook 'rhtml-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq auto-fill-mode nil)))
 
+(require 'feature-mode)
 (require 'autotest)
 (require 'rcov-overlay)
