@@ -2,10 +2,15 @@
 
 (add-to-list 'load-path "~/emacs/ruby/rhtml")
 
-(require 'rhtml-mode)
+;(require 'rhtml-mode)
+(require 'haml-mode)
 
+;(add-to-list 'auto-mode-alist
+;	     '("\\.rhtml$" . rhtml-mode))
 (add-to-list 'auto-mode-alist
-	     '("\\.rhtml$" . rhtml-mode))
+	     '("\\.haml$" . haml-mode))
+
+(require 'feature-mode)
 
 (require 'autotest)
 (require 'rcov-overlay)
