@@ -25,7 +25,7 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; Set the default spell check program
-(setq-default ispell-program-name "/opt/local/bin/aspell")
+(setq-default ispell-program-name "/usr/bin/aspell")
 
 ;;
 ;; System specific changes
@@ -38,21 +38,6 @@
 ;; Non-programming emacs modes
 ;;
 (require 'rhb_org_config) ;; Configuration for Org-mode
-
-;;
-;; Support for the w3m webbrowser
-;;
-; My current version of w3m doesn't work with emacs 23 so I'll use
-; mac's default until I get around to fixing it.
-;(add-to-list 'load-path "~/emacs/emacs-w3m")
-;(require 'rhb_w3m_config)
-(setq
- browse-url-browser-function 'rhb/mac-open)
-
-(defun rhb/mac-open (url &rest ignore)
-  "Browse URL using open."
-  (interactive "sURL: ")
-  (shell-command (concat "open " url)))
 
 ;;
 ;; Libraries for supporting gnus

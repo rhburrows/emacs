@@ -3,6 +3,18 @@
 ;(setq mac-command-modifier 'meta)
 (setq x-select-enable-clipboard t)
 
+;; Use the mac default to open the browser
+(setq
+ browse-url-browser-function 'rhb/mac-open)
+
+(defun rhb/mac-open (url &rest ignore)
+  "Browse URL using open."
+  (interactive "sURL: ")
+  (shell-command (concat "open " url)))
+
+;; Override the location of ispell for where it is on my mac
+(setq-default ispell-program-name "/opt/local/bin/aspell")
+
 ;;
 ;; Support for growl for notifications
 ;; http://growl.info/
