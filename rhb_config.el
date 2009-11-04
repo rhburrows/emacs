@@ -84,6 +84,7 @@
 (add-to-list 'load-path "~/emacs/jabber") ;; Configuration for jabber
 (add-to-list 'load-path "~/emacs/ruby") ;; Configuration for ruby programming
 (add-to-list 'load-path "~/emacs/magit") ;; Configuration for git
+(add-to-list 'load-path "~/emacs/twitter") ;; Configuration for twitter
 
 ;(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -96,7 +97,8 @@
 (require 'rhb_haxe_config) ;; Loading Haxe modes
 (require 'rhb_jabber_config) ;; Loading jabber mode
 (require 'rhb_ruby_config) ;; Loading ruby modes
-(require 'rhb_git_config) ;; Loading git modes
+(require 'rhb_git_config) ;; Loading git modeso
+(require 'rhb_twitter_config) ;; Loading twittering-mode
 
 ;;
 ;; General Interface Changes
