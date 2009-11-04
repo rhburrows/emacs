@@ -4,8 +4,11 @@
 (require 'jabber-autoloads)
 
 (setq jabber-account-list '(
+			    ("rhburrows@crystalcommerce.com"
+			     (:network-server . "talk.google.com")
+			     (:port . 443)
+			     (:connection-type . ssl))
 			    ("rhburrows@gmail.com"
-			     ;(:password . nil)
 			     (:network-server . "talk.google.com")
 			     (:port . 443)
 			     (:connection-type . ssl))
