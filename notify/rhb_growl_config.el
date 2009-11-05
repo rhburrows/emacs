@@ -2,6 +2,8 @@
 
 (require 'growl)
 
+(defalias 'rhb/notify 'notify)
+
 ;; Hook in erc to use growl for notifications
 (defun my-erc-hook (match-type nick message)
   "Shows a growl notification, when users' nick is mentioned"

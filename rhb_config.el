@@ -28,13 +28,6 @@
 (setq-default ispell-program-name "/usr/bin/aspell")
 
 ;;
-;; System specific changes
-;;
-(if (or (string= window-system "mac")
-	(string= window-system "ns"))
-    (require 'rhb_mac_config))
-
-;;
 ;; Non-programming emacs modes
 ;;
 (require 'rhb_org_config) ;; Configuration for Org-mode
@@ -70,6 +63,7 @@
 (add-to-list 'load-path "~/emacs/ruby") ;; Configuration for ruby programming
 (add-to-list 'load-path "~/emacs/magit") ;; Configuration for git
 (add-to-list 'load-path "~/emacs/twitter") ;; Configuration for twitter
+(add-to-list 'load-path "~/emacs/notify") ;; Configuration for notifications
 
 ;(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -91,4 +85,10 @@
 (require 'rhb_keybindings)
 (require 'rhb_interface_config)
 
-
+;;
+;; System specific changes
+;;
+(if (or (string= window-system "mac")
+	(string= window-system "ns"))
+    (require 'rhb_mac_config)
+  (require 'rhb_linux_config))
