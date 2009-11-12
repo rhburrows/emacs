@@ -20,5 +20,9 @@
 	    (setq auto-fill-mode nil)))
 
 (require 'feature-mode)
+
+;; Use unit-test UI
+(setq autotest-use-ui 1)
 (require 'autotest)
+
 (require 'rcov-overlay)
