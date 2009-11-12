@@ -1,6 +1,10 @@
 (provide 'rhb_ruby_config)
 
 (add-to-list 'load-path "~/emacs/ruby/rhtml")
+(add-to-list 'load-path "~/emacs/ruby/ruby1.8-elisp")
+
+(require 'ruby-mode)
+(require 'ruby-electric)
 
 ;(require 'rhtml-mode)
 (require 'haml-mode)
