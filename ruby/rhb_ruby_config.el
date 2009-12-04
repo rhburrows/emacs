@@ -3,24 +3,22 @@
 (add-to-list 'load-path "~/emacs/ruby/rhtml")
 (add-to-list 'load-path "~/emacs/ruby/ruby1.8-elisp")
 
-(require 'ruby-mode)
-(require 'ruby-electric)
+(autoload 'ruby-mode "ruby-mode"
+  "Mode for editing ruby source files")
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(autoload 'run-ruby "inf-ruby"
+  "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby"
+  "Set local key defs for inf-ruby in ruby-mode")
+(add-hook 'ruby-mode-hook
+	  '(lambda ()
+	     (inf-ruby-keys)))
 
-;(require 'rhtml-mode)
 (require 'haml-mode)
-
-;(add-to-list 'auto-mode-alist
-;	     '("\\.rhtml$" . rhtml-mode))
 (add-to-list 'auto-mode-alist
 	     '("\\.haml$" . haml-mode))
 
-(add-hook 'rhtml-mode-hook
-	  (lambda ()
-	    (setq indent-tabs-mode nil)
-	    (setq auto-fill-mode nil)))
-
 (require 'feature-mode)
-
 ;; Use unit-test UI
 (setq autotest-use-ui 1)
 (require 'autotest)
