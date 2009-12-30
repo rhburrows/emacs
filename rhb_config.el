@@ -32,8 +32,6 @@
 ;;
 (require 'rhb_org_config) ;; Configuration for Org-mode
 
-(require 'ack-emacs)
-
 ;;
 ;; Libraries for supporting gnus
 ;; actual configuration/use is in .gnus
