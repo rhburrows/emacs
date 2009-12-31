@@ -27,6 +27,9 @@
 ;; Set the default spell check program
 (setq-default ispell-program-name "/usr/bin/aspell")
 
+;; Simple Ack mode
+(require 'ack)
+
 ;;
 ;; Non-programming emacs modes
 ;;
