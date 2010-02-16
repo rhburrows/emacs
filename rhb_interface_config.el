@@ -62,13 +62,18 @@
 ;; Zenburn requires color-theme
 (add-to-list 'load-path "~/emacs/themes")
 (require 'zenburn)
-(color-theme-zenburn)
+;(color-theme-zenburn)
+
+(load "~/emacs/themes/color-theme-rlx")
+(color-theme-rlx)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))
 ;  "Face to use for `hl-line-face'." :group 'hl-line)
 ;(setq hl-line-face 'hl-line)
 ;(global-hl-line-mode t)
+
+(windmove-default-keybindings)
 
 ;; Swap windows (stolen from Steve Yegge)
 (defun swap-windows()

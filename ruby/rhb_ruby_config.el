@@ -3,6 +3,9 @@
 (add-to-list 'load-path "~/emacs/ruby/rhtml")
 (add-to-list 'load-path "~/emacs/ruby/ruby1.8-elisp")
 
+(setq ri-ruby-script (expand-file-name "~/emacs/ruby/ri-emacs.rb"))
+(autoload 'ri "~/emacs/ruby/ri-ruby.el" nil t)
+
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
