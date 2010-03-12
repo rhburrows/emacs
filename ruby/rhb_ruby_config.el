@@ -12,6 +12,8 @@
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'auto-mode-alist '(".autotest" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby"
@@ -25,8 +27,3 @@
 	     '("\\.haml$" . haml-mode))
 
 (require 'feature-mode)
-;; Use unit-test UI
-(setq autotest-use-ui 1)
-(require 'autotest)
-
-(require 'rcov-overlay)
