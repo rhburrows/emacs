@@ -260,10 +260,10 @@ printf
        (defun ri-ruby-show-info (method info) 
 	 (with-displaying-help-buffer
 	  (lambda () (princ info))
-	  (format "ri `%s'" method))))
+	  (format "fri `%s'" method))))
       (t                                ; for Emacs
        (defun ri-ruby-show-info (method info)
-         (let ((b (get-buffer-create (format "ri `%s'" method))))
+         (let ((b (get-buffer-create (format "fri `%s'" method))))
            (display-buffer b)
            (with-current-buffer b
              (buffer-disable-undo)

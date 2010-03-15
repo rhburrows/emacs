@@ -19,6 +19,7 @@
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
 
+(require 'rubydb)
 (require 'ruby-electric)
 (require 'ruby-block)
 (ruby-block-mode t)
@@ -29,7 +30,7 @@
 	     (ruby-electric-mode t)
 	     (inf-ruby-keys)
 	     (define-key ruby-mode-map "\C-c#" 'comment-or-uncomment-region)
-	     (define-key ruby-mode-map "\C-ci" 'ri)))
+	     (define-key ruby-mode-map (kbd "C-c i") 'ri)))
 
 (require 'haml-mode)
 (add-to-list 'auto-mode-alist
