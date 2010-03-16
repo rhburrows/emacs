@@ -19,6 +19,7 @@
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
 
+(require 'rspec-mode)
 (require 'rubydb)
 (require 'ruby-electric)
 (require 'ruby-block)

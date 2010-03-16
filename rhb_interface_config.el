@@ -62,10 +62,10 @@
 ;; Zenburn requires color-theme
 (add-to-list 'load-path "~/emacs/themes")
 (require 'zenburn)
-;(color-theme-zenburn)
+(color-theme-zenburn)
 
 (load "~/emacs/themes/color-theme-rlx")
-(color-theme-rlx)
+;(color-theme-rlx)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))
@@ -74,6 +74,13 @@
 ;(global-hl-line-mode t)
 
 (windmove-default-keybindings)
+
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
+(ansi-color-for-comint-mode-on)
+;(remove-hook 'compilation-filter-hook 'ansi-color-apply)
+(defun my-ansi-color-hook ()
+  (ansi-color-for-comint-mode-on))
+(add-hook 'compilation-filter-hook 'my-ansi-color-hook)
 
 ;; Swap windows (stolen from Steve Yegge)
 (defun swap-windows()
