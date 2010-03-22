@@ -6,7 +6,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
-(setq haskell-program-name "/opt/local/bin/ghci")
+(setq haskell-program-name "/usr/bin/ghci")
 
 ;; (defun unicode-symbol (name)
 ;;    "Translate a symbolic name for a Unicode character -- e.g., LEFT-ARROW                                      
