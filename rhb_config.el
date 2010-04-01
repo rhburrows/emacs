@@ -67,6 +67,7 @@
 (add-to-list 'load-path "~/emacs/magit") ;; Configuration for git
 (add-to-list 'load-path "~/emacs/twitter") ;; Configuration for twitter
 (add-to-list 'load-path "~/emacs/notify") ;; Configuration for notifications
+(add-to-list 'load-path "~/emacs/yasnippet") ;; Confiration for snippets
 
 ;(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_lisp_config) ;; Loading Lisp mode and Slime
@@ -81,6 +82,7 @@
 (require 'rhb_ruby_config) ;; Loading ruby modes
 (require 'rhb_git_config) ;; Loading git modeso
 (require 'rhb_twitter_config) ;; Loading twittering-mode
+(require 'rhb_yasnippet_config) ;; Loading yasnippet
 
 ;;
 ;; General Interface Changes

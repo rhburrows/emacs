@@ -21,14 +21,12 @@
 
 (require 'rspec-mode)
 (require 'rubydb)
-(require 'ruby-electric)
 (require 'ruby-block)
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
 (add-hook 'ruby-mode-hook
 	  '(lambda ()
-	     (ruby-electric-mode t)
 	     (inf-ruby-keys)
 	     (define-key ruby-mode-map "\C-c#" 'comment-or-uncomment-region)
 	     (define-key ruby-mode-map (kbd "C-c i") 'ri)))
@@ -41,3 +39,6 @@
 	     '("\\.sass$" . sass-mode))
 
 (require 'feature-mode)
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
