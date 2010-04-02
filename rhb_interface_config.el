@@ -60,11 +60,11 @@
 ;(color-theme-charcoal-black)
 ;(color-theme-clarity)
 ;; Zenburn requires color-theme
-(add-to-list 'load-path "~/emacs/themes")
+(add-to-list 'load-path (concat emacs-dir "themes"))
 (require 'zenburn)
 (color-theme-zenburn)
 
-(load "~/emacs/themes/color-theme-rlx")
+(load (concat emacs-dir "themes/color-theme-rlx"))
 ;(color-theme-rlx)
 
 ;; highlight the current line

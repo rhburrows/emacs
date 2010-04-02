@@ -1,10 +1,10 @@
 (provide 'rhb_ruby_config)
 
-(add-to-list 'load-path "~/emacs/ruby/rhtml")
-(add-to-list 'load-path "~/emacs/ruby/ruby1.8-elisp")
+(add-to-list 'load-path (concat emacs-dir "ruby/rhtml"))
+(add-to-list 'load-path (concat emacs-dir "ruby/ruby1.8-elisp"))
 
-(setq ri-ruby-script (expand-file-name "~/emacs/ruby/ri-emacs.rb"))
-(autoload 'ri "~/emacs/ruby/ri-ruby.el" nil t)
+(setq ri-ruby-script (concat emacs-dir "ruby/ri-emacs.rb"))
+(autoload 'ri (concat emacs-dir "ruby/ri-ruby.el") nil t)
 
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
