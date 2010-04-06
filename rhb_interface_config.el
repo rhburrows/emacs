@@ -73,9 +73,9 @@
 ;(setq hl-line-face 'hl-line)
 ;(global-hl-line-mode t)
 
-;(windmove-default-keybindings)
 (require 'framemove)
-(framemove-default-keybindings)
+(windmove-default-keybindings)
+(setq framemove-hook-into-windmove t)
 
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (ansi-color-for-comint-mode-on)
