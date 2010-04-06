@@ -21,6 +21,9 @@
 	    (define-key ido-completion-map [tab] 'ido-complete)))
 (ido-mode t)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
 ;; text-mode setup
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
