@@ -38,7 +38,7 @@ class DefaultDisplay
          unless p =~ /\b\.\b/
             p = method.full_name + p
          end
-         @formatter.wrap(p) 
+         @formatter.wrap(p)
          @formatter.break_to_newline
       end
    end

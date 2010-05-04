@@ -13,6 +13,13 @@
 (add-to-list 'auto-mode-alist '(".autotest" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+
+(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
+
+;; TODO: Make conditional use only if using rvm myself
+(require 'rvm)
+(rvm-use-default)
 
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
@@ -28,7 +35,8 @@
 ;; Set up formatting
 ;; Move this to other modes if necessary
 (setq whitespace-style '(trailing line space-before-tab
-				  indentation space-after-tab)
+				  indentation space-after-tab
+				  lines-tail)
       whitespace-line-column 80)
 
 (add-hook 'ruby-mode-hook

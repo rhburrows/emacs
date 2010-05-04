@@ -8,3 +8,8 @@
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
+
+(if (and (daemonp) (locate-library "edit-server"))
+    (progn
+      (require 'edit-server)
+      (edit-server-start)))
