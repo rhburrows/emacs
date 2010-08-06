@@ -94,7 +94,7 @@
 (require 'rhb_js_config) ;; Loading Javascript modes
 (require 'rhb_haxe_config) ;; Loading Haxe modes
 (require 'rhb_jabber_config) ;; Loading jabber mode
-:(require 'rhb_ruby_config) ;; Loading ruby modes
+(require 'rhb_ruby_config) ;; Loading ruby modes
 (require 'rhb_git_config) ;; Loading git modeso
 (require 'rhb_twitter_config) ;; Loading twittering-mode
 (require 'rhb_yasnippet_config) ;; Loading yasnippet
