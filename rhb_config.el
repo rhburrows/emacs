@@ -53,6 +53,19 @@
 (require 'htmlize)
 
 ;;
+;; Terminal emulation
+;;
+(autoload 'multi-term "multi-term" nil t)
+(autoload 'multi-term-next "multi-term" nil t)
+
+(setq multi-term-program "/bin/bash")
+
+(add-hook 'term-mode-hook
+	  #'(lambda () (setq autopair-dont-activate t)))
+(global-set-key (kbd "C-c t") 'multi-term-next)
+(global-set-key (kbd "C-c T") 'multi-term)
+
+;;
 ;; Programming language customizations
 ;;
 (add-to-list 'load-path (concat emacs-dir "lisp")) ;; Configuration for list programming

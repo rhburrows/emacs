@@ -26,6 +26,14 @@
 (autoload 'inf-ruby-keys "inf-ruby"
   "Set local key defs for inf-ruby in ruby-mode")
 
+(require 'linum)
+(require 'ruby-complexity)
+(add-hook 'ruby-mode-hook
+	  (function (lambda()
+		      (flymake-mode)
+		      (linum-mode)
+		      (ruby-complexity-mode))))
+
 (require 'rspec-mode)
 (require 'rubydb)
 (require 'ruby-block)
