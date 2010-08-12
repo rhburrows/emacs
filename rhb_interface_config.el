@@ -102,3 +102,14 @@
 	   (set-window-buffer w2 b1)
 	   (set-window-start w1 s2)
 	   (set-window-start w2 s1)))))
+
+(defun find-file-next-frame()
+  "If there is a second frame, run find-file there"
+  (interactive)
+  (cond ((not multiple-frames)
+	 (message "Only one frame is present."))
+	(t
+	 (let ((f (next-frame)))
+	   (select-frame f)
+	   (x-focus-frame f)
+	   (ido-find-file)))))
