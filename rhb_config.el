@@ -33,6 +33,10 @@
 ;; Simple Ack mode
 (require 'ack)
 
+;; Undo tree
+(require 'undo-tree)
+(global-undo-tree-mode)
+
 ;;
 ;; Non-programming emacs modes
 ;;
