@@ -18,8 +18,10 @@
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 ;; TODO: Make conditional use only if using rvm myself
-(require 'rvm)
-(rvm-use-default)
+(if (executable-find "rvm")
+    (progn
+      (require 'rvm)
+      (rvm-use-default)))
 
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
