@@ -13,3 +13,8 @@
     (progn
       (require 'edit-server)
       (edit-server-start)))
+
+;; Set up the erlang paths so the mode can be loaded
+(setq rhb/erlang-root-dir "/usr/local/lib/erlang")
+(setq rhb/erlang-emacs-dir "/usr/local/lib/erlang/lib/tools-2.6.6/emacs")
+(setq rhb/erlang-bin-dir "/usr/local/lib/erlang/bin")

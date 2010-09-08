@@ -78,9 +78,7 @@
 (add-to-list 'load-path (concat emacs-dir "twitter")) ;; Configuration for twitter
 (add-to-list 'load-path (concat emacs-dir "notify")) ;; Configuration for notifications
 (add-to-list 'load-path (concat emacs-dir "yasnippet")) ;; Confiration for snippets
-(add-to-list 'load-path (concat emacs-dir "erlang")) ;; Configuration for erlang
 
-(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
 (require 'rhb_markdown_config) ;; Loading Markdown modes
@@ -105,3 +103,7 @@
 	(string= window-system "ns"))
     (require 'rhb_mac_config)
   (require 'rhb_linux_config))
+
+;; Erlang stuff must be loaded /after/ system specific
+(add-to-list 'load-path (concat emacs-dir "erlang")) ;; Configuration for erlang
+(require 'rhb_erlang_config) ;; Loading Erlang mode
