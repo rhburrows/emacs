@@ -1,6 +1,10 @@
 (setq emacs-dir (file-name-directory load-file-name))
 (add-to-list 'load-path emacs-dir)
 
+;; Change the package locations
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+			 ("gnu" . "http://elpa.gnu.org/packages/")))
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
