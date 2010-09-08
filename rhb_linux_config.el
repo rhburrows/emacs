@@ -7,7 +7,7 @@
 	'(font . "-unknown-Inconsolata-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+      browse-url-generic-program "conkeror")
 
 (if (and (daemonp) (locate-library "edit-server"))
     (progn

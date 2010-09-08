@@ -43,7 +43,7 @@
 (require 'rhb_org_config) ;; Configuration for Org-mode
 
 ;; Spaces not tabs
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;;
 ;; Lets us turn buffers into html with syntax highlighting
@@ -78,8 +78,9 @@
 (add-to-list 'load-path (concat emacs-dir "twitter")) ;; Configuration for twitter
 (add-to-list 'load-path (concat emacs-dir "notify")) ;; Configuration for notifications
 (add-to-list 'load-path (concat emacs-dir "yasnippet")) ;; Confiration for snippets
+(add-to-list 'load-path (concat emacs-dir "erlang")) ;; Configuration for erlang
 
-;(require 'rhb_erlang_config) ;; Loading Erlang mode
+(require 'rhb_erlang_config) ;; Loading Erlang mode
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
 (require 'rhb_markdown_config) ;; Loading Markdown modes
