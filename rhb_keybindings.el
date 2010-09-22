@@ -10,9 +10,4 @@
     (backward-kill-word arg)))
 (global-set-key "\C-w" 'backward-kill-word-or-kill-region)
 
-(defun woman-existing-frame()
-  "Open WoMan entry in an existing frame"
-  (interactive)
-  (let ((woman-frame (car (frame-list))))
-    (woman)))
-(global-set-key "\C-cm" 'woman-existing-frame)
+(global-set-key "\C-cm" 'woman)

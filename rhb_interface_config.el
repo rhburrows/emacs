@@ -84,6 +84,9 @@
   (ansi-color-for-comint-mode-on))
 (add-hook 'compilation-filter-hook 'my-ansi-color-hook)
 
+;; Make WoMan not open a new frame
+(setq woman-use-own-frame nil)
+
 ;; Swap windows (stolen from Steve Yegge)
 (defun swap-windows()
   "If you have 2 windows, it swaps them."
