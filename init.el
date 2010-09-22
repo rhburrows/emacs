@@ -22,3 +22,5 @@
 	rspec-mode))
 
 (require 'rhb_config)
+
+(put 'downcase-region 'disabled nil)
