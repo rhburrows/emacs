@@ -11,12 +11,12 @@
   "Erlang's bin directory")
 
 ;; Only load the emacs modes if the appropriate paths have been set
-(if (and
-     rhb/erlang-root-dir
-     rhb/erlang-emacs-dir
-     rhb/erlang-bin-dir)
-    (progn
-      (add-to-list 'load-path rhb/erlang-emacs-dir)
-      (add-to-list 'exec-path rhb/erlang-bin-dir)
-      (setq erlang-root-dir rhb/erlang-root-dir)
-      (require 'erlang-start)))
+;(if (and
+;     rhb/erlang-root-dir
+;     rhb/erlang-emacs-dir
+;     rhb/erlang-bin-dir)
+;    (progn
+;      (add-to-list 'load-path rhb/erlang-emacs-dir)
+;      (add-to-list 'exec-path rhb/erlang-bin-dir)
+;      (setq erlang-root-dir rhb/erlang-root-dir)
+;      (require 'erlang-start)))

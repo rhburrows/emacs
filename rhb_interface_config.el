@@ -54,18 +54,18 @@
 ;(set-theme-to-vibrant-ink)
 ; Use color-theme instead
 
-;(require 'color-theme)
+(require 'color-theme)
 ;(color-theme-initialize)
 ;(color-theme-midnight)
 ;(color-theme-charcoal-black)
 ;(color-theme-clarity)
 ;; Zenburn requires color-theme
 (add-to-list 'load-path (concat emacs-dir "themes"))
-(require 'zenburn)
-(color-theme-zenburn)
+;(require 'zenburn)
+;(color-theme-zenburn)
 
 (load (concat emacs-dir "themes/color-theme-rlx"))
-;(color-theme-rlx)
+(color-theme-rlx)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))
@@ -83,6 +83,8 @@
 (defun my-ansi-color-hook ()
   (ansi-color-for-comint-mode-on))
 (add-hook 'compilation-filter-hook 'my-ansi-color-hook)
+
+(put 'downcase-region 'disabled nil)
 
 ;; Make WoMan not open a new frame
 (setq woman-use-own-frame nil)

@@ -5,6 +5,10 @@
 ;;;
 (provide 'rhb_config)
 
+;; Load elpa packages before everything else
+(add-to-list 'load-path (concat emacs-dir "elpa"))
+(require 'rhb_package_config)
+
 ;;
 ;; Start the server so we can use emacsclient to open files
 ;;
