@@ -2,5 +2,3 @@
 
 (require 'twittering-mode)
 (setq twittering-username "rhburrows")
-
-(twittering-icon-mode)
