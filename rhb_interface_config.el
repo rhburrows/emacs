@@ -54,18 +54,18 @@
 ;(set-theme-to-vibrant-ink)
 ; Use color-theme instead
 
-(require 'color-theme)
+;(require 'color-theme)
 ;(color-theme-initialize)
 ;(color-theme-midnight)
 ;(color-theme-charcoal-black)
 ;(color-theme-clarity)
 ;; Zenburn requires color-theme
 (add-to-list 'load-path (concat emacs-dir "themes"))
-;(require 'zenburn)
-;(color-theme-zenburn)
+(require 'zenburn)
+(color-theme-zenburn)
 
 (load (concat emacs-dir "themes/color-theme-rlx"))
-(color-theme-rlx)
+;(color-theme-rlx)
 
 ;; highlight the current line
 ;(defface hl-line '((t (:background "midnight blue")))
@@ -77,12 +77,12 @@
 (windmove-default-keybindings)
 (setq framemove-hook-into-windmove t)
 
-(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
-(ansi-color-for-comint-mode-on)
-;(remove-hook 'compilation-filter-hook 'ansi-color-apply)
-(defun my-ansi-color-hook ()
-  (ansi-color-for-comint-mode-on))
-(add-hook 'compilation-filter-hook 'my-ansi-color-hook)
+(require 'ansi-color)
+(defun colorize-compilation-buffer()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compliation-filter-hook 'colorize-compilation-buffer)
 
 (put 'downcase-region 'disabled nil)
 
