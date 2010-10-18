@@ -25,6 +25,14 @@
 	    (define-key ido-completion-map [tab] 'ido-complete)))
 (ido-mode t)
 
+;; Smex is ido for M-x
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; Old M-x
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
