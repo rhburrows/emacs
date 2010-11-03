@@ -11,3 +11,4 @@
 (global-set-key "\C-w" 'backward-kill-word-or-kill-region)
 
 (global-set-key "\C-cm" 'woman)
+(global-set-key (kbd "C-c r") 'replace-regexp)

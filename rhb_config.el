@@ -89,7 +89,7 @@
 (add-to-list 'load-path (concat emacs-dir "magit")) ;; Configuration for git
 (add-to-list 'load-path (concat emacs-dir "twitter")) ;; Configuration for twitter
 (add-to-list 'load-path (concat emacs-dir "notify")) ;; Configuration for notifications
-(add-to-list 'load-path (concat emacs-dir "yasnippet")) ;; Confiration for snippets
+(add-to-list 'load-path (concat emacs-dir "yasnippet")) ;; Configration for snippets
 
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes

@@ -54,17 +54,20 @@
 ;(set-theme-to-vibrant-ink)
 ; Use color-theme instead
 
-;(require 'color-theme)
+(require 'color-theme)
+(setq color-theme-load-all-themes nil)
+(require 'color-theme-tangotango)
+(color-theme-tangotango)
 ;(color-theme-initialize)
 ;(color-theme-midnight)
 ;(color-theme-charcoal-black)
 ;(color-theme-clarity)
 ;; Zenburn requires color-theme
-(add-to-list 'load-path (concat emacs-dir "themes"))
-(require 'zenburn)
-(color-theme-zenburn)
+;(add-to-list 'load-path (concat emacs-dir "themes"))
+;(require 'zenburn)
+;(color-theme-zenburn)
 
-(load (concat emacs-dir "themes/color-theme-rlx"))
+;(load (concat emacs-dir "themes/color-theme-rlx"))
 ;(color-theme-rlx)
 
 ;; highlight the current line
