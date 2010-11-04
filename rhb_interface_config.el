@@ -56,6 +56,8 @@
 
 (require 'color-theme)
 (setq color-theme-load-all-themes nil)
+
+(add-to-list 'load-path (concat emacs-dir "themes"))
 (require 'color-theme-tangotango)
 (color-theme-tangotango)
 ;(color-theme-initialize)
@@ -63,7 +65,6 @@
 ;(color-theme-charcoal-black)
 ;(color-theme-clarity)
 ;; Zenburn requires color-theme
-;(add-to-list 'load-path (concat emacs-dir "themes"))
 ;(require 'zenburn)
 ;(color-theme-zenburn)
 
