@@ -15,6 +15,8 @@
 ;; Override the location of ispell for where it is on my mac
 (setq-default ispell-program-name "/opt/local/bin/aspell")
 
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 ;;
 ;; Support for growl for notifications
 ;; http://growl.info/
