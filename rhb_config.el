@@ -39,6 +39,9 @@
 ;; text-mode setup
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
+;; Enable highlighting
+(global-hi-lock-mode 1)
+
 ;; Set the default spell check program
 (setq-default ispell-program-name "/usr/bin/aspell")
 
