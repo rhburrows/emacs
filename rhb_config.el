@@ -12,7 +12,9 @@
 ;;
 ;; Start the server so we can use emacsclient to open files
 ;;
-(server-start)
+(setq server-socket-file "/tmp/emacs1000/server")
+(unless (file-exists-p server-socket-file)
+  (server-start))
 
 ;;; Some of this below stuff might start belonging in separate files
 
