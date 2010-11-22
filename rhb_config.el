@@ -107,6 +107,8 @@
 (require 'rhb_twitter_config) ;; Loading twittering-mode
 (require 'rhb_yasnippet_config) ;; Loading yasnippet
 
+(require 'rhb_gnus)
+
 ;;
 ;; General Interface Changes
 ;;
