@@ -26,6 +26,7 @@
 	  (lambda ()
 	    (define-key ido-completion-map [tab] 'ido-complete)))
 (ido-mode t)
+(setq ido-create-new-buffer 'always)
 
 ;; Smex is ido for M-x
 (require 'smex)

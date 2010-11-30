@@ -29,12 +29,16 @@
   "Set local key defs for inf-ruby in ruby-mode")
 
 (require 'linum)
-(require 'ruby-complexity)
+;; Figure this out later
+;; (require 'ruby-complexity)
+;; (add-hook 'ruby-mode-hook
+;; 	  (function (lambda()
+;; 		      (flymake-mode)
+;; 		      (linum-mode)
+;; 		      (ruby-complexity-mode))))
 (add-hook 'ruby-mode-hook
-	  (function (lambda()
-		      (flymake-mode)
-		      (linum-mode)
-		      (ruby-complexity-mode))))
+          (function (lambda()
+                      (linum-mode))))
 
 (require 'rspec-mode)
 (require 'rubydb)

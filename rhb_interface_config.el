@@ -72,10 +72,8 @@
 ;(color-theme-rlx)
 
 ;; highlight the current line
-;(defface hl-line '((t (:background "midnight blue")))
-;  "Face to use for `hl-line-face'." :group 'hl-line)
-;(setq hl-line-face 'hl-line)
-;(global-hl-line-mode t)
+(global-hl-line-mode t)
+(set-face-background 'hl-line "#282828")
 
 (require 'framemove)
 (windmove-default-keybindings)
