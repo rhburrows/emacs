@@ -50,3 +50,6 @@
   (terminal-there default-directory))
 
 ; (global-set-key "\C-c\C-t" 'terminal-here)
+(setq rhb/erlang-root-dir "/usr/local/lib/erlang")
+(setq rhb/erlang-emacs-dir "/usr/local/lib/erlang/lib/tools-2.6.6.1/emacs")
+(setq rhb/erlang-bin-dir "/usr/local/lib/erlang/bin")
