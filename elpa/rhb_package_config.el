@@ -8,9 +8,7 @@
       '(inf-ruby
         rspec-mode
         ruby-mode
-        smex
-        weblogger
-        xml-rpc))
+        smex))
 
 ;; Stolen from the emacs-starter-kit
 (defun starter-kit-elpa-install ()
