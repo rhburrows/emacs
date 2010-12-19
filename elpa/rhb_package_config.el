@@ -1,7 +1,7 @@
 (provide 'rhb_package_config)
 
 (when
-    (load "package.el")
+    (require 'package)
   (package-initialize))
 
 (setq rhb-installed-packages
