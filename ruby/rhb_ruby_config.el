@@ -1,10 +1,7 @@
 (provide 'rhb_ruby_config)
 
-(add-to-list 'load-path (concat emacs-dir "ruby/rhtml"))
 (add-to-list 'load-path (concat emacs-dir "ruby/ruby1.8-elisp"))
-
-(setq ri-ruby-script (concat emacs-dir "ruby/ri-emacs.rb"))
-(autoload 'ri (concat emacs-dir "ruby/ri-ruby.el") nil t)
+(add-to-list 'load-path (concat emacs-dir "ruby/feature-mode"))
 
 (autoload 'ruby-mode "ruby-mode"
   "Mode for editing ruby source files")
@@ -29,13 +26,6 @@
   "Set local key defs for inf-ruby in ruby-mode")
 
 (require 'linum)
-;; Figure this out later
-;; (require 'ruby-complexity)
-;; (add-hook 'ruby-mode-hook
-;; 	  (function (lambda()
-;; 		      (flymake-mode)
-;; 		      (linum-mode)
-;; 		      (ruby-complexity-mode))))
 (add-hook 'ruby-mode-hook
           (function (lambda()
                       (linum-mode))))
@@ -68,6 +58,8 @@
 	     '("\\.sass$" . sass-mode))
 
 (require 'feature-mode)
+(add-to-list 'auto-mode-alist
+             '("\.feature$" . feature-mode))
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
