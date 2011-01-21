@@ -115,8 +115,8 @@
 ;;
 ;; General Interface Changes
 ;;
-(require 'rhb_keybindings)
 (require 'rhb_interface_config)
+(require 'rhb_keybindings)
 
 ;;
 ;; System specific changes
