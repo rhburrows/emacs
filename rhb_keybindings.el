@@ -12,4 +12,4 @@
 
 (global-set-key "\C-cm" 'woman)
 (global-set-key (kbd "C-c r") 'replace-regexp)
-(global-set-key "\C-c s" 'swap-windows)
+(global-set-key (kbd "\C-c s") 'swap-windows)
