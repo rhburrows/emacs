@@ -13,3 +13,5 @@
 (global-set-key "\C-cm" 'woman)
 (global-set-key (kbd "C-c r") 'replace-regexp)
 (global-set-key (kbd "\C-c s") 'swap-windows)
+
+(define-key dired-mode-map "e" 'dired-find-file-other-frame)
