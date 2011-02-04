@@ -14,4 +14,7 @@
 (global-set-key (kbd "C-c r") 'replace-regexp)
 (global-set-key (kbd "\C-c s") 'swap-windows)
 
+(require 'dired)
 (define-key dired-mode-map "e" 'dired-find-file-other-frame)
+
+(global-set-key "\C-c\C-f" 'ido-find-file-in-tags-files)

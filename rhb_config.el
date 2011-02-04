@@ -16,17 +16,7 @@
 (unless (file-exists-p server-socket-file)
   (server-start))
 
-;;; Some of this below stuff might start belonging in separate files
-
-;; Pull this out (from stuart halloway screencast)
-(require 'ido)
-;; Enable fuzzy matching
-(setq ido-enable-flex-matching t)
-(add-hook 'ido-setup-hook
-	  (lambda ()
-	    (define-key ido-completion-map [tab] 'ido-complete)))
-(ido-mode t)
-(setq ido-create-new-buffer 'always)
+(require 'rhb_ido_config)
 
 ;; Smex is ido for M-x
 (require 'smex)
