@@ -98,8 +98,6 @@
 (require 'rhb_twitter_config) ;; Loading twittering-mode
 (require 'rhb_yasnippet_config) ;; Loading yasnippet
 (require 'rhb_java_config) ;; Loading java
-(require 'csharp-mode)
-(require 'haxe-mode)
 
 (require 'rhb_slime_config)
 
