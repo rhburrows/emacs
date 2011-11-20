@@ -67,6 +67,8 @@
 ;; Zenburn requires color-theme
 ;(require 'zenburn)
 ;(color-theme-zenburn)
+;(require 'color-theme-solarized)
+;(color-theme-solarized-dark)
 
 ;(load (concat emacs-dir "themes/color-theme-rlx"))
 ;(color-theme-rlx)

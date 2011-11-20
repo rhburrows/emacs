@@ -4,3 +4,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq js2-bounce-indent-flag nil)
 
+(autoload 'unityjs-mode "unityjs-mode" "Major mode for editing Unity Javascipt code.")
+(require 'unityjs-mode)
+(setq js-indent-level 2)

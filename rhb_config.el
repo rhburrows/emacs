@@ -38,9 +38,6 @@
 ;; Set the default spell check program
 (setq-default ispell-program-name "/usr/bin/aspell")
 
-;; Simple Ack mode
-(require 'ack)
-
 ;; Undo tree
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -57,6 +54,8 @@
 ;; Lets us turn buffers into html with syntax highlighting
 ;;
 (require 'htmlize)
+
+(setenv "PATH" (concat (getenv "PATH") ":/Users/rhburrows/bin"))
 
 ;;
 ;; Terminal emulation
@@ -86,6 +85,7 @@
 (add-to-list 'load-path (concat emacs-dir "twitter")) ;; Configuration for twitter
 (add-to-list 'load-path (concat emacs-dir "notify")) ;; Configuration for notifications
 (add-to-list 'load-path (concat emacs-dir "yasnippet")) ;; Configration for snippets
+(add-to-list 'load-path (concat emacs-dir "java")) ;; Configuration for java
 
 (require 'rhb_flymake_config) ;; Loading Flymake
 (require 'rhb_xml_config) ;; Loading XML (nXML) modes
@@ -97,6 +97,11 @@
 (require 'rhb_git_config) ;; Loading git modeso
 (require 'rhb_twitter_config) ;; Loading twittering-mode
 (require 'rhb_yasnippet_config) ;; Loading yasnippet
+(require 'rhb_java_config) ;; Loading java
+(require 'csharp-mode)
+(require 'haxe-mode)
+
+(require 'rhb_slime_config)
 
 (require 'rhb_eshell) ;; Eshell customizations
 
@@ -119,3 +124,7 @@
 ;; Erlang stuff must be loaded /after/ system specific
 (add-to-list 'load-path (concat emacs-dir "erlang")) ;; Configuration for erlang
 (require 'rhb_erlang_config) ;; Loading Erlang mode
+
+
+;; Probably should put this somewhere else but don't feel like it
+(add-to-list 'auto-mode-alist '("SConstruct$" . python-mode))

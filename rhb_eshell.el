@@ -6,3 +6,10 @@
                      (lambda (name)
                        (expand-file-name (concat "./app/models/" name ".rb")))
                      (eshell-flatten-list (reverse args)))))
+
+;; Add extra stuff to path
+(setenv "PATH" (concat
+                "/usr/local/bin:"
+                (getenv "PATH")
+                ":~/.cabal/bin:/usr/games:/usr/local/sbin"))
+         

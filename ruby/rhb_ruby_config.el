@@ -10,15 +10,14 @@
 (add-to-list 'auto-mode-alist '(".autotest" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Isolate" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 
 (add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 ;; TODO: Make conditional use only if using rvm myself
-(if (executable-find "rvm")
-    (progn
-      (require 'rvm)
-      (rvm-use-default)))
+(require 'rvm)
+; (rvm-use-default)
 
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
@@ -63,6 +62,3 @@
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
