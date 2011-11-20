@@ -79,7 +79,6 @@
 (add-to-list 'load-path (concat emacs-dir "color-theme")) ;; Configuration for color themes
 (add-to-list 'load-path (concat emacs-dir "haskell")) ;; Configuration for haskell
 (add-to-list 'load-path (concat emacs-dir "js")) ;; Configuration for javascript
-(add-to-list 'load-path (concat emacs-dir "jabber")) ;; Configuration for jabber
 (add-to-list 'load-path (concat emacs-dir "ruby")) ;; Configuration for ruby programming
 (add-to-list 'load-path (concat emacs-dir "magit")) ;; Configuration for git
 (add-to-list 'load-path (concat emacs-dir "twitter")) ;; Configuration for twitter
@@ -92,7 +91,6 @@
 (require 'rhb_markdown_config) ;; Loading Markdown modes
 (require 'rhb_haskell_config) ;; Loading Haskell modes
 (require 'rhb_js_config) ;; Loading Javascript modes
-(require 'rhb_jabber_config) ;; Loading jabber mode
 (require 'rhb_ruby_config) ;; Loading ruby modes
 (require 'rhb_git_config) ;; Loading git modeso
 (require 'rhb_twitter_config) ;; Loading twittering-mode
