@@ -1,7 +1,5 @@
 (provide 'rhb_linux_config)
 
-(require 'rhb_notify_config)
-
 ;; Linux font selection
 (add-to-list 'default-frame-alist
 	'(font . "Inconsolata-11"))

@@ -18,12 +18,6 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 ;;
-;; Support for growl for notifications
-;; http://growl.info/
-(add-to-list 'load-path "~/emacs/growl")
-(require 'rhb_growl_config)
-
-;;
 ;; Commands to run things in Mac's terminal
 ;; http://gist.github.com/11310
 (defun tell-terminal (commands)
