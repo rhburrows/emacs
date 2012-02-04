@@ -50,6 +50,8 @@
 ;; Spaces not tabs
 (setq-default indent-tabs-mode nil)
 
+(setq-default tab-width 2)
+
 ;;
 ;; Lets us turn buffers into html with syntax highlighting
 ;;
@@ -96,8 +98,7 @@
 (require 'rhb_twitter_config) ;; Loading twittering-mode
 (require 'rhb_yasnippet_config) ;; Loading yasnippet
 (require 'rhb_java_config) ;; Loading java
-
-(require 'rhb_slime_config)
+(require 'rhb_coffee) ;; CoffeeScript configs
 
 (require 'rhb_eshell) ;; Eshell customizations
 
